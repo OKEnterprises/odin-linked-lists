@@ -18,16 +18,16 @@ class ListNode<E> {
 class LinkedList<E> {
     size: number
     head: ListNode<E> | undefined;
-    tail: ListNode<E>;
+    tail: ListNode<E> | undefined;
 
-    constructor(head: ListNode<E>) {
-        this.size = 0;
+    constructor(head?: ListNode<E>) {
+        this.size = head ? 1 : 0;
         this.head = head;
         this.tail = head;
     }
 
     append(value: ListNode<E>) {
-        if (this.tail === null) {
+        if (!this.tail) {
             this.head = value;
             this.tail = value;
         } else {
