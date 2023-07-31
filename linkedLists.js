@@ -82,8 +82,9 @@ var LinkedList = /** @class */ (function () {
     LinkedList.prototype.toString = function () {
         var output = "";
         var curr = this.head;
-        while (curr && curr.nextNode) {
+        while (curr) {
             output += "( ".concat(curr.value, " ) -> ");
+            curr = curr.nextNode;
         }
         output += "null";
         return output;
@@ -93,4 +94,11 @@ var LinkedList = /** @class */ (function () {
 var myHead = new ListNode(7);
 console.log(myHead);
 var myList = new LinkedList(myHead);
-console.log(myList);
+console.log(myList.toString());
+var myNext = new ListNode(8);
+myList.prepend(myNext);
+console.log(myList.toString());
+console.log(myList.at(0));
+console.log(myList.find(myNext));
+myList.pop();
+console.log(myList.toString());

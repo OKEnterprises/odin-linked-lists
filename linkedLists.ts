@@ -26,7 +26,7 @@ class LinkedList<E> {
         this.tail = head;
     }
 
-    append(value: ListNode<E>) {
+    append(value: ListNode<E>): void {
         if (!this.tail) {
             this.head = value;
             this.tail = value;
@@ -37,7 +37,7 @@ class LinkedList<E> {
         this.size++;
     }
 
-    prepend(value: ListNode<E>) {
+    prepend(value: ListNode<E>): void {
         if (this.tail === null) {
             this.head = value;
             this.tail = value;
@@ -103,8 +103,9 @@ x
         let output = "";
         let curr = this.head;
 
-        while (curr && curr.nextNode) {
+        while (curr) {
             output += `( ${curr.value} ) -> `;
+            curr = curr.nextNode;
         }
 
         output += "null"
@@ -116,4 +117,12 @@ x
 const myHead = new ListNode(7);
 console.log(myHead)
 const myList = new LinkedList(myHead);
-console.log(myList);
+console.log(myList.toString());
+const myNext = new ListNode(8);
+myList.prepend(myNext);
+console.log(myList.toString());
+console.log(myList.at(0));
+console.log(myList.find(myNext));
+myList.pop();
+console.log(myList.toString());
+
